@@ -2,6 +2,7 @@
  * Test code for Gomspace panels
  *
  * @author Johan De Claville Christiansen
+ * @author Sanghyuck Han
  * Copyright 2010 GomSpace ApS. All rights reserved.
  */
 
@@ -19,7 +20,7 @@
 #include <dev/max6675.h>
 #include <dev/usart.h>
 
-#include <dev/accel_sensor.h>
+#include "accel_sensor.h"
 
 extern spi_dev_t spi_dev;
 
