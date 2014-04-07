@@ -20,7 +20,7 @@
 #include <dev/max6675.h>
 #include <dev/usart.h>
 
-#include "accel_sensor.h"
+#include <accel_sensor.h>
 
 extern spi_dev_t spi_dev;
 
