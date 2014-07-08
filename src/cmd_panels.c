@@ -2,7 +2,6 @@
  * Test code for Gomspace panels
  *
  * @author Johan De Claville Christiansen
- * @author Sanghyuck Han
  * Copyright 2010 GomSpace ApS. All rights reserved.
  */
 
@@ -20,7 +19,7 @@
 #include <dev/max6675.h>
 #include <dev/usart.h>
 
-#include <accel_sensor.h>
+#include <dev/accel_sensor.h>
 
 extern spi_dev_t spi_dev;
 
@@ -52,7 +51,7 @@ static spi_chip_t accel_sensor_chip[1];
 static const char * name_map[LM70_MAP_SIZE] = {"A1", "A2", "A3", "A4", "A5", "A6"};
 static int gyro_map[GYRO_MAP_SIZE] = {1, 3, 5, 8, 10, 12};
 static int lm70_map[LM70_MAP_SIZE] = {2, 4, 6, 9, 11, 13};
-static int accel_sensor_map[1] = {14};
+static int accel_sensor_map[1] = {7};
 //int max6675_cs  = 1;
 
 int cmd_panels_init(struct command_context *ctx) {
@@ -197,7 +196,7 @@ int cmd_accel_sensor_test(struct command_context *ctx) {
 		if (usart_messages_waiting(USART_CONSOLE) != 0)
 			break;
 
-		printf("acceleration %f\r\n", accel_sensor_read_temp(&accel_sensor_chip[0]));
+		printf("acceleration %f\r\n", accel_sensor_read_accel(&accel_sensor_chip[0]));
 		vTaskDelay(100);
 	}
 
