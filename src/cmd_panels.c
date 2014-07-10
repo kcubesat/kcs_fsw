@@ -22,7 +22,7 @@
 #include <dev/accel_sensor.h>
 
 extern spi_dev_t spi_dev;
-
+extern spi_dev_t spi_dev7;
 /**
  * Chip selects:
  *
@@ -45,13 +45,13 @@ extern spi_dev_t spi_dev;
 
 static spi_chip_t gyro_chip[GYRO_MAP_SIZE];
 static spi_chip_t lm70_chip[LM70_MAP_SIZE];
-static spi_chip_t accel_sensor_chip[1];
+static spi_chip_t accel_sensor_chip;
 //static spi_chip_t max6675_chip;
 
 static const char * name_map[LM70_MAP_SIZE] = {"A1", "A2", "A3", "A4", "A5", "A6"};
 static int gyro_map[GYRO_MAP_SIZE] = {1, 3, 5, 8, 10, 12};
 static int lm70_map[LM70_MAP_SIZE] = {2, 4, 6, 9, 11, 13};
-static int accel_sensor_map[1] = {7};
+static int accel_sensor_map = {7};
 //int max6675_cs  = 1;
 
 int cmd_panels_init(struct command_context *ctx) {
@@ -187,16 +187,19 @@ int cmd_lm70_test(struct command_context *ctx) {
 int cmd_accel_sensor_init(struct command_context *ctx) {
 	extern spi_dev_t spi_dev;
 	accel_sensor_spi_setup_cs(&spi_dev, &accel_sensor_chip[0], accel_sensor_map[0]);
+	accel_sensor_spi_setup(&accel_sensor_chip[0]);
 	return CMD_ERROR_NONE;
 }
 
 int cmd_accel_sensor_test(struct command_context *ctx) {
-
+	
 	while(1) {
 		if (usart_messages_waiting(USART_CONSOLE) != 0)
 			break;
 
-		printf("acceleration %f\r\n", accel_sensor_read_accel(&accel_sensor_chip[0]));
+		accel_sensor_read_accel(&accel_sensor_chip[0]);
+//		printf("Y: %4.1f m/s^2\n\r", data.y);
+//		printf("Z: %4.1f m/s^2\n\r", data.z);
 		vTaskDelay(100);
 	}
 
