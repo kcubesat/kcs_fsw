@@ -54,7 +54,7 @@
 
 /* Global storage of spi device */
 spi_dev_t spi_dev;
-spi_dev_t dpi_dev7;
+//spi_dev spi_dev7;
 
 #ifdef WITH_STORAGE
 #include <unistd.h>
@@ -231,11 +231,11 @@ void vTaskInit(void * pvParameters) {
 	spi_dev.index = 0;					// Use SPI0
 	spi_init_dev(&spi_dev);
 
-	/* Setup the SPI7 hardware (accel_sensor) */
-	spi_dev7.vaiable_ps = 7;	// Set CS once,
-	spi_dev7.pcs_decode = 1;	// Use chip select mux //????
-	spi_dev7.index = 7;		// Use SPI7
-	spi_init_dev(&spi_dev7);
+//	/* Setup the SPI7 hardware (accel_sensor) */
+//	spi_dev7.vaiable_ps = 7;	// Set CS once,
+//	spi_dev7.pcs_decode = 1;	// Use chip select mux //????
+//	spi_dev7.index = 7;		// Use SPI7
+//	spi_init_dev(&spi_dev7);
 
 #ifdef WITH_STORAGE
 	/* Initialize VFS */

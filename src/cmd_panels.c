@@ -51,7 +51,7 @@ static spi_chip_t accel_sensor_chip;
 static const char * name_map[LM70_MAP_SIZE] = {"A1", "A2", "A3", "A4", "A5", "A6"};
 static int gyro_map[GYRO_MAP_SIZE] = {1, 3, 5, 8, 10, 12};
 static int lm70_map[LM70_MAP_SIZE] = {2, 4, 6, 9, 11, 13};
-static int accel_sensor_map = {7};
+static int accel_sensor_map = 7;
 //int max6675_cs  = 1;
 
 int cmd_panels_init(struct command_context *ctx) {
@@ -186,8 +186,8 @@ int cmd_lm70_test(struct command_context *ctx) {
 
 int cmd_accel_sensor_init(struct command_context *ctx) {
 	extern spi_dev_t spi_dev;
-	accel_sensor_spi_setup_cs(&spi_dev, &accel_sensor_chip[0], accel_sensor_map[0]);
-	accel_sensor_spi_setup(&accel_sensor_chip[0]);
+	accel_sensor_spi_setup_cs(&spi_dev, &accel_sensor_chip, accel_sensor_map);
+	accel_sensor_spi_setup(&accel_sensor_chip);
 	return CMD_ERROR_NONE;
 }
 
