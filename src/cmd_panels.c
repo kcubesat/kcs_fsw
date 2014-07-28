@@ -197,7 +197,7 @@ int cmd_accel_sensor_test(struct command_context *ctx) {
 		if (usart_messages_waiting(USART_CONSOLE) != 0)
 			break;
 
-		accel_sensor_read_accel(&accel_sensor_chip[0]);
+		accel_sensor_read_accel(&accel_sensor_chip);
 //		printf("Y: %4.1f m/s^2\n\r", data.y);
 //		printf("Z: %4.1f m/s^2\n\r", data.z);
 		vTaskDelay(100);
