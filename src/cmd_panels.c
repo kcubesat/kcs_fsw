@@ -198,8 +198,7 @@ int cmd_accel_sensor_test(struct command_context *ctx) {
 			break;
 
 		accel_sensor_read_accel(&accel_sensor_chip);
-//		printf("Y: %4.1f m/s^2\n\r", data.y);
-//		printf("Z: %4.1f m/s^2\n\r", data.z);
+		printf("X: %4.1f m/s^2\n\r", data.x);
 		vTaskDelay(100);
 	}
 

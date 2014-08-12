@@ -313,7 +313,8 @@ struct command accel_sensor_i2c_commands[] = {
 struct command camera_usart_commands[] = {
         {
                 .name = "test",
-                .help = "camera_usart_commands",
+                .help = "camera_usart_test",
+		.usage = "<testmode>",
 		.handler = camera_usart_test,
 	},
 };
