@@ -322,6 +322,16 @@ struct command camera_usart_commands[] = {
 		.usage = "<testmode>",
 		.handler = camera_usart_test,
 	},
+        {
+                .name = "sync",
+                .help = "camera_usart_sync",
+		.handler = camera_usart_sync,
+	},
+        {
+                .name = "picture get",
+                .help = "camera_picture_get",
+		.handler = camera_picture_get,
+	},
 };
 struct command __root_command periph_commands[] = {
 	{
