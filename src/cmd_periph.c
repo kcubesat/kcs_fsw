@@ -328,8 +328,8 @@ struct command camera_usart_commands[] = {
 		.handler = camera_usart_sync,
 	},
         {
-                .name = "picture get",
-                .help = "camera_picture_get",
+                .name = "picture",
+                .help = "camera_usart_picture",
 		.handler = camera_picture_get,
 	},
 };
