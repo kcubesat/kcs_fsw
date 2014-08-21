@@ -332,6 +332,11 @@ struct command camera_usart_commands[] = {
                 .help = "camera_usart_picture",
 		.handler = camera_picture_get,
 	},
+        {
+                .name = "save",
+                .help = "camera_usart_picture save",
+		.handler = camera_picture_save,
+	},
 };
 struct command __root_command periph_commands[] = {
 	{
